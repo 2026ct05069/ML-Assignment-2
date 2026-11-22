@@ -2,10 +2,6 @@
 
 **Machine Learning - Assignment 2 | Classification models compared on the Diabetes 130-US Hospitals dataset**
 
-> **Before you submit:** the text in `[square brackets]` marks the few things that can only be filled in after you
-> run the notebook (your GitHub link, the results table and your observations). Replace them, then delete this note.
-
----
 
 ## 1. Problem Statement
 
@@ -70,7 +66,6 @@ The largest class is almost five times the size of the smallest. A model that al
 about 54% of the time without learning anything. Because of this, I did not rely on accuracy alone. I also looked at AUC, MCC and how
 well each model finds the small early-readmission group.
 
-![Class distribution](results/class_distribution.png)
 
 ### Data preparation
 
@@ -90,7 +85,7 @@ well each model finds the small early-readmission group.
 
 ## 3. Repository and How to Run
 
-GitHub repository: **[paste your repository link here]**
+GitHub repository: **https://github.com/2026ct05069/ML-Assignment-2**
 
 ```
 project-folder/
@@ -145,13 +140,19 @@ version of the Matthews correlation coefficient.
 
 ### Comparison of the models (test set)
 
-**[Paste the table from `results/metrics_table.md` here. It has one row per model and the columns Accuracy, AUC, Precision, Recall, F1 and MCC.]**
+| **ML Model Name** | **Accuracy** | **AUC** | **Precision** | **Recall** | **F1** | **MCC** |
+| --- | --- | --- | --- | --- | --- | --- |
+| **Logistic Regression** | 0.5830 | 0.6725 | 0.5462 | 0.5830 | 0.5292 | 0.1974 |
+| **Decision Tree** | 0.5728 | 0.6430 | 0.5320 | 0.5728 | 0.5163 | 0.1732 |
+| **kNN** | 0.5330 | 0.5962 | 0.5007 | 0.5330 | 0.5108 | 0.1373 |
+| **Naive Bayes** | 0.1649 | 0.5871 | 0.5835 | 0.1649 | 0.1300 | 0.0673 |
+| **Random Forest (Ensemble)** | 0.5911 | 0.6793 | 0.5842 | 0.5911 | 0.5375 | 0.2143 |
 
 ### Graphs of all metrics
 
 **[After running the notebook, keep the images below. They are created in the `results/` folder.]**
 
-![All metrics for all models](results/metrics_bar_chart.png)
+!(metrics_bar_chart-1.png)(results/metrics_bar_chart.png)
 
 ![One panel per metric](results/metrics_per_metric.png)
 
@@ -161,18 +162,14 @@ version of the Matthews correlation coefficient.
 
 ### Observations on model performance
 
-**[Paste the table from `results/observations.md` here and rewrite each observation in your own words. For every model, say how
-it did on the metrics, whether it overfitted (compare train and test accuracy), and how well it caught the small `<30` class. Finish
-with the overall winner and the reason for choosing it.]**
-
 | ML Model Name | Observation about model performance |
 | --- | --- |
-| Logistic Regression | [your observation] |
-| Decision Tree | [your observation] |
-| kNN | [your observation] |
-| Naive Bayes | [your observation] |
-| Random Forest (ensemble) | [your observation] |
-| **Overall winner for this dataset** | [model name and the reason] |
+| **Logistic Regression** | A linear model on scaled and one-hot inputs: fast, stable and well calibrated, but it cannot model non-linear interactions between features. Test accuracy 0.583 (rank 2 of 5; majority-class baseline 0.539), AUC 0.672, F1 0.529, MCC 0.197 (rank 2). Fit check: consistent generalisation (train-test accuracy gap 0.003). Recall for the minority class '<30' is 0.021. |
+| **Decision Tree** | A single depth-limited tree: easy to interpret and able to capture non-linear splits, but a single tree is high-variance. Test accuracy 0.573 (rank 3 of 5; majority-class baseline 0.539), AUC 0.643, F1 0.516, MCC 0.173 (rank 3). Fit check: consistent generalisation (train-test accuracy gap 0.011). Recall for the minority class '<30' is 0.011. |
+| **kNN** | Distance based on 205 encoded features: distances become less informative in high dimensions, and prediction is slow on a large test set. Test accuracy 0.533 (rank 4 of 5; majority-class baseline 0.539), AUC 0.596, F1 0.511, MCC 0.137 (rank 4). Fit check: clear overfitting (train-test accuracy gap 0.123). Recall for the minority class '<30' is 0.076. |
+| **Naive Bayes** | Assumes features are independent and Gaussian; the one-hot and medication features are correlated and not Gaussian, so the assumptions are violated. Test accuracy 0.165 (rank 5 of 5; majority-class baseline 0.539), AUC 0.587, F1 0.130, MCC 0.067 (rank 5). Fit check: consistent generalisation (train-test accuracy gap 0.003). Recall for the minority class '<30' is 0.948. |
+| **Random Forest (Ensemble)** | Averages many de-correlated trees, which reduces variance and captures non-linear interactions. Test accuracy 0.591 (rank 1 of 5; majority-class baseline 0.539), AUC 0.679, F1 0.537, MCC 0.214 (rank 1). Fit check: clear overfitting (train-test accuracy gap 0.310). Recall for the minority class '<30' is 0.009. |
+| **Overall Winner for your dataset?** | **Random Forest (Ensemble)** is the overall winner: it has the highest MCC (0.214), which is the most reliable single score on an imbalanced multi-class target, and it is best on 6 of the 6 metrics (best per metric: Accuracy: Random Forest (Ensemble), AUC: Random Forest (Ensemble), Precision: Random Forest (Ensemble), Recall: Random Forest (Ensemble), F1: Random Forest (Ensemble), MCC: Random Forest (Ensemble)). Its AUC is 0.679 and its train-test accuracy gap is 0.310. |
 
 ### Things to keep in mind
 
