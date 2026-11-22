@@ -126,11 +126,11 @@ version of the Matthews correlation coefficient.
 
 | Model | Settings used |
 | --- | --- |
-| Logistic Regression | `max_iter=1000`, `C=1.0`, `random_state=42` |
-| Decision Tree | `criterion="gini"`, `max_depth=8`, `min_samples_leaf=5`, `random_state=42` |
-| kNN | `n_neighbors=7`, uniform weights, Euclidean distance |
-| Naive Bayes | Gaussian Naive Bayes, default settings |
-| Random Forest (ensemble) | `n_estimators=200`, `min_samples_leaf=2`, `random_state=42` |
+| Logistic Regression | `max_iter=1000`, `C=0.1`, `random_state=42` |
+| Decision Tree | `criterion="gini"`, `max_depth=4`, `min_samples_leaf=5`, `random_state=42` |
+| kNN | `n_neighbors=101`, uniform weights, Euclidean distance |
+| Naive Bayes | Gaussian Naive Bayes, `var_smoothing=0.1` |
+| Random Forest (ensemble) | `n_estimators=200`, `max_depth=None`, `min_samples_leaf=2`, `random_state=42` |
 
 ### Comparison of the models (test set)
 
