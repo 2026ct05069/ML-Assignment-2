@@ -152,16 +152,28 @@ version of the Matthews correlation coefficient.
 
 ![Confusion matrices](Results/confusion_matrices.png)
 
-### Observations on model performance
+## 📊 Model Performance and Observations
 
-| ML Model Name | Observation about model performance |
-| --- | --- |
-| Logistic Regression | Logistic Regression came second on accuracy (0.583), AUC (0.672) and MCC (0.197). What I like about it is how steady it is: training and test accuracy are almost the same (gap of 0.003), so it is not memorising the data. The downside is that it finds only 2.1% of the early readmissions (`<30`), probably because a straight-line boundary cannot capture the more complicated patterns. |
-| Decision Tree | The decision tree was a little behind (accuracy 0.573, AUC 0.643, MCC 0.173). Limiting its depth worked, since the train-test gap is only 0.011, but it still spots just 1.1% of the `<30` patients. |
-| kNN | kNN did poorly. Its accuracy of 0.533 is lower than the 0.539 I would get by always guessing "not readmitted", and the gap between training and test accuracy (0.123) shows that it overfits. After encoding there are 205 features, so distances between patients probably stop meaning much. On the positive side, it finds 7.6% of the `<30` cases, which is more than Logistic Regression, the Decision Tree or the Random Forest manage. |
-| Naive Bayes | Naive Bayes was last on accuracy (0.165), AUC (0.587), F1 (0.130) and MCC (0.067). It labels almost every patient as `<30`, which is why its recall for that class is a high 0.948 while its overall accuracy collapses, so that high number is not a good sign. The model assumes the features are independent and bell-shaped, and one-hot and medication columns do not fit that. |
-| Random Forest (ensemble) | Random Forest came first on all six metrics (accuracy 0.591, AUC 0.679, F1 0.537, MCC 0.214). Its training accuracy is far above its test accuracy (gap of 0.310), which is common for forests because they nearly memorise the training data, but it still beats every other model on unseen data, and that is what matters. It finds only 0.9% of the `<30` cases, though. |
-| **Overall winner for this dataset** | **Random Forest** is my overall winner. It ranks first on every metric, including MCC, which I trust most for an imbalanced three-class problem like this one. Logistic Regression is close behind and much steadier, but the forest copes better with non-linear patterns. I should be honest that the lead is small, and that none of the models is good at catching early readmissions. |
+| **ML Model Name** | **Observation about Model Performance** |
+| :--- | :--- |
+| **Logistic Regression** | Logistic Regression ranks second out of five on MCC (0.197), with test accuracy of 0.583, AUC of 0.673 and F1-score of 0.529. Its accuracy is only slightly above the 0.539 baseline of always predicting 'NO'. Training and test accuracy are close (gap: 0.003), indicating that the model is not overfitting. It identifies only 1.9% of the `<30` cases. As a linear model, it is fast and stable but cannot capture complex interactions between features. |
+| **Decision Tree** | Decision Tree ranks third out of five on MCC (0.180), with test accuracy of 0.575, AUC of 0.631 and F1-score of 0.521. Its accuracy is only slightly above the 0.539 baseline. Training and test accuracy are close (gap: -0.001), indicating no significant overfitting. It identifies 0.0% of the `<30` cases. A single depth-limited tree is easy to interpret, but individual trees tend to be unstable. |
+| **kNN** | kNN ranks fourth out of five on MCC (0.169), with test accuracy of 0.575, AUC of 0.646 and F1-score of 0.500. Its accuracy is only slightly above the 0.539 baseline. Training and test accuracy are close (gap: 0.009), indicating no significant overfitting. It identifies only 1.0% of the `<30` cases. With 205 encoded features, distances between patients become less meaningful due to the high dimensionality of the dataset. |
+| **Naive Bayes** | Naive Bayes ranks fifth out of five on MCC (0.163), with test accuracy of 0.561, AUC of 0.644 and F1-score of 0.507. Its accuracy is only slightly above the 0.539 baseline. Training and test accuracy are close (gap: 0.004), indicating no significant overfitting. It identifies 11.6% of the `<30` cases, the highest among all five models. However, its assumptions of feature independence and bell-shaped distributions are not well suited to one-hot encoded and medication-related features. |
+| **Random Forest (Ensemble)** | Random Forest ranks first out of five on MCC (0.214), with test accuracy of 0.591, AUC of 0.679 and F1-score of 0.537. Its accuracy is above the 0.539 baseline. Training accuracy is significantly higher than test accuracy (gap: 0.310), indicating substantial overfitting. It identifies only 0.9% of the `<30` cases. By combining multiple decision trees, it captures non-linear patterns and reduces variance. |
+| **Overall Winner for This Dataset** | **Random Forest (Ensemble)** is the overall winner, achieving the highest MCC (0.214) and performing best across all six evaluation metrics. Logistic Regression comes second, with an MCC of 0.197, just 0.017 behind Random Forest. Although Random Forest performs best on unseen data, its training-test gap of 0.310 indicates substantial overfitting. Furthermore, none of the five models performs well at identifying early readmissions (`<30`), with the best detection rate being 11.6% from Naive Bayes. |
+
+### 🏆 Overall Conclusion
+
+Random Forest (Ensemble) is the best-performing model for this dataset based on the overall evaluation metrics, particularly MCC, which is useful for evaluating an imbalanced multi-class classification problem.
+
+However, its training-test accuracy gap of 0.310 indicates substantial overfitting. Its test accuracy of 0.591 is also only moderately higher than the baseline accuracy of 0.539.
+
+More importantly, all five models struggle to identify early readmissions (`<30`). Naive Bayes achieves the highest detection rate at just 11.6%.
+
+**Conclusion:** Random Forest is the overall winner, but class imbalance and poor minority-class detection remain major challenges that require further improvement.
+
+
 
 ### Things to keep in mind
 
