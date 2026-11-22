@@ -92,7 +92,6 @@ ML-Assignment-2/
 │
 ├── Model/
 │   ├── 2026CT05069_ML_Assignment_...ipynb
-│   └── hi
 │
 ├── Results/
 │   ├── class_distribution.png
@@ -104,8 +103,6 @@ ML-Assignment-2/
 ├── README.md
 ├── requirements.txt
 └── test_data.csv
-```
-
 ```
 
 To run it yourself:
