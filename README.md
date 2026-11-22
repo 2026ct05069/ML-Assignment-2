@@ -111,14 +111,10 @@ To run it yourself:
 pip install -r requirements.txt
 ```
 
-Then open `model/ml_assignment_2_diabetes.ipynb` and run all cells. If `data/diabetic_data.csv` is not there, the notebook downloads the
-dataset from UCI directly. Or, from the command line:
-
-```bash
-python main.py --data data/diabetic_data.csv --target readmitted \
-  --drop-cols encounter_id patient_nbr weight \
-  --as-categorical admission_type_id discharge_disposition_id admission_source_id
-```
+Then open `model/ml_assignment_2_diabetes.ipynb` and run all cells from top to bottom. The notebook loads the dataset directly from
+the UCI repository (dataset id 296) using the `ucimlrepo` package, so there is nothing to download by hand. An internet connection is
+needed for that first step. Running the notebook also creates `test_data.csv`, the trained models in `model/saved/` and the tables
+and graphs in `results/`.
 
 ---
 
