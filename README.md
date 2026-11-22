@@ -150,15 +150,13 @@ version of the Matthews correlation coefficient.
 
 ### Graphs of all metrics
 
-**[After running the notebook, keep the images below. They are created in the `results/` folder.]**
+![All metrics for all models](Results/metrics_bar_chart.png)
 
-!(metrics_bar_chart-1.png)(results/metrics_bar_chart.png)
+![One panel per metric](Results/metrics_per_metric.png)
 
-![One panel per metric](results/metrics_per_metric.png)
+![Metric heatmap](Results/metrics_heatmap.png)
 
-![Metric heatmap](results/metrics_heatmap.png)
-
-![Confusion matrices](results/confusion_matrices.png)
+![Confusion matrices](Results/confusion_matrices.png)
 
 ### Observations on model performance
 
