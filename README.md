@@ -163,18 +163,6 @@ version of the Matthews correlation coefficient.
 | **Random Forest (Ensemble)** | Random Forest ranks first out of five on MCC (0.214), with test accuracy of 0.591, AUC of 0.679 and F1-score of 0.537. Its accuracy is above the 0.539 baseline. Training accuracy is significantly higher than test accuracy (gap: 0.310), indicating substantial overfitting. It identifies only 0.9% of the `<30` cases. By combining multiple decision trees, it captures non-linear patterns and reduces variance. |
 | **Overall Winner for This Dataset** | **Random Forest (Ensemble)** is the overall winner, achieving the highest MCC (0.214) and performing best across all six evaluation metrics. Logistic Regression comes second, with an MCC of 0.197, just 0.017 behind Random Forest. Although Random Forest performs best on unseen data, its training-test gap of 0.310 indicates substantial overfitting. Furthermore, none of the five models performs well at identifying early readmissions (`<30`), with the best detection rate being 11.6% from Naive Bayes. |
 
-### 🏆 Overall Conclusion
-
-Random Forest (Ensemble) is the best-performing model for this dataset based on the overall evaluation metrics, particularly MCC, which is useful for evaluating an imbalanced multi-class classification problem.
-
-However, its training-test accuracy gap of 0.310 indicates substantial overfitting. Its test accuracy of 0.591 is also only moderately higher than the baseline accuracy of 0.539.
-
-More importantly, all five models struggle to identify early readmissions (`<30`). Naive Bayes achieves the highest detection rate at just 11.6%.
-
-**Conclusion:** Random Forest is the overall winner, but class imbalance and poor minority-class detection remain major challenges that require further improvement.
-
-
-
 ### Things to keep in mind
 
 All models were run once on a single train-test split with fairly standard settings, so models with very close scores could swap places
