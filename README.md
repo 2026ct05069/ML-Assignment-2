@@ -88,23 +88,24 @@ well each model finds the small early-readmission group.
 GitHub repository: **https://github.com/2026ct05069/ML-Assignment-2**
 
 ```
-project-folder/
-|-- README.md
-|-- requirements.txt
-|-- test_data.csv                      (the 20% test set, created by the notebook)
-|-- main.py                            (same pipeline as the notebook, runs from the command line)
-|-- data/                              (diabetic_data.csv goes here)
-|-- results/                           (comparison table, observations and graphs)
-|-- model/
-    |-- ml_assignment_2_diabetes.ipynb (the full notebook: data prep, five models, metrics, observations)
-    |-- logistic_regression.py
-    |-- decision_tree.py
-    |-- knn.py
-    |-- naive_bayes.py
-    |-- random_forest.py
-    |-- data_utils.py
-    |-- evaluate.py
-    |-- saved/                         (trained models, *.joblib)
+ML-Assignment-2/
+│
+├── Model/
+│   ├── 2026CT05069_ML_Assignment_...ipynb
+│   └── hi
+│
+├── Results/
+│   ├── class_distribution.png
+│   ├── confusion_matrices.png
+│   ├── metrics_bar_chart.png
+│   ├── metrics_heatmap.png
+│   └── metrics_per_metric.png
+│
+├── README.md
+├── requirements.txt
+└── test_data.csv
+```
+
 ```
 
 To run it yourself:
